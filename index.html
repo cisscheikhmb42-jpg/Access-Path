@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACCESS PATH — Accessibility Assistant</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #ffffff;
+      padding: 20px 8%;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: #155eef;
+    }
+
+    .badge {
+      background: #eaf2ff;
+      color: #155eef;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 50px auto 30px;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #155eef;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #667085;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .upload-box {
+      background: white;
+      border: 2px dashed #b8c5dc;
+      border-radius: 20px;
+      padding: 45px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .upload-box:hover {
+      border-color: #155eef;
+      background: #f8faff;
+    }
+
+    .upload-icon {
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    .upload-box h2 {
+      margin-bottom: 10px;
+    }
+
+    .upload-box p {
+      color: #667085;
+      margin-bottom: 20px;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .button {
+      border: none;
+      background: #155eef;
+      color: white;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: #0d47c7;
+    }
+
+    #fileName {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #155eef;
+    }
+
+    #results {
+      display: none;
+      margin-top: 30px;
+    }
+
+    .analysis-title {
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #667085;
+      line-height: 1.6;
+    }
+
+    .card ul {
+      padding-left: 20px;
+      line-height: 1.9;
+      color: #475467;
+    }
+
+    .warning {
+      border-left: 5px solid #f79009;
+    }
+
+    .accessibility {
+      margin-top: 25px;
+      background: #172033;
+      color: white;
+      padding: 25px;
+      border-radius: 16px;
+    }
+
+    .accessibility h3 {
+      margin-bottom: 15px;
+    }
+
+    .access-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .access-buttons button {
+      background: white;
+      color: #172033;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: #667085;
+      font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">ACCESS PATH</div>
+  <div class="badge">AI Accessibility Assistant</div>
+</header>
+
+<section class="hero">
+  <h1>Rendre l'information <span>accessible à tous.</span></h1>
+
+  <p>
+    ACCESS PATH utilise l'intelligence artificielle pour transformer
+    les documents complexes et les procédures administratives
+    en informations simples, compréhensibles et accessibles.
+  </p>
+</section>
+
+<main class="container">
+
+  <label class="upload-box" for="document">
+    <div class="upload-icon">📄</div>
+
+    <h2>Analyser un document</h2>
+
+    <p>
+      Importez un PDF, une image ou un document administratif.
+    </p>
+
+    <span class="button">Choisir un document</span>
+
+    <input
+      type="file"
+      id="document"
+      accept=".pdf,.png,.jpg,.jpeg,.txt"
+    >
+
+    <div id="fileName"></div>
+  </label>
+
+  <div id="results">
+
+    <h2 class="analysis-title">
+      🧠 Analyse ACCESS PATH
+    </h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>📌 De quoi s'agit-il ?</h3>
+
+        <p>
+          Ce document présente une procédure administrative.
+          ACCESS PATH identifie automatiquement son objectif
+          et explique les informations importantes dans un langage simple.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>📋 Documents nécessaires</h3>
+
+        <ul>
+          <li>Pièce d'identité</li>
+          <li>Formulaire de demande</li>
+          <li>Justificatif demandé</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>🪜 Étapes à suivre</h3>
+
+        <ul>
+          <li>Lire les conditions de la procédure</li>
+          <li>Préparer les documents nécessaires</li>
+          <li>Déposer la demande</li>
+          <li>Suivre l'évolution du dossier</li>
+        </ul>
+      </div>
+
+      <div class="card warning">
+        <h3>⚠️ Points à vérifier</h3>
+
+        <p>
+          ACCESS PATH peut identifier les informations manquantes
+          ou les éléments nécessitant une vérification par l'utilisateur.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="accessibility">
+
+      <h3>♿ Modes d'accessibilité</h3>
+
+      <div class="access-buttons">
+
+        <button onclick="speakResult()">
+          🔊 Écouter
+        </button>
+
+        <button onclick="increaseText()">
+          🔤 Agrandir le texte
+        </button>
+
+        <button onclick="simplify()">
+          🧠 Simplifier
+        </button>
+
+        <button onclick="highContrast()">
+          👁️ Contraste élevé
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  ACCESS PATH — AI-powered accessibility for everyone.
+</footer>
+
+<script>
+
+  const input = document.getElementById("document");
+  const fileName = document.getElementById("fileName");
+  const results = document.getElementById("results");
+
+  input.addEventListener("change", function() {
+
+    if (this.files.length > 0) {
+
+      fileName.textContent =
+        "📎 Document sélectionné : " + this.files[0].name;
+
+      setTimeout(() => {
+        results.style.display = "block";
+        results.scrollIntoView({ behavior: "smooth" });
+      }, 700);
+
+    }
+
+  });
+
+  function speakResult() {
+
+    const text =
+      "ACCESS PATH. Ce document présente une procédure administrative. " +
+      "Les documents nécessaires sont une pièce d'identité, " +
+      "un formulaire de demande et un justificatif. " +
+      "Préparez les documents, déposez votre demande et suivez son évolution.";
+
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = "fr-FR";
+
+    window.speechSynthesis.speak(speech);
+  }
+
+  function increaseText() {
+
+    document.body.style.fontSize = "19px";
+
+  }
+
+  function simplify() {
+
+    alert(
+      "Mode simplifié activé : ACCESS PATH présente uniquement " +
+      "les informations essentielles et les actions à effectuer."
+    );
+
+  }
+
+  function highContrast() {
+
+    document.body.style.background = "#000";
+    document.body.style.color = "#fff";
+
+  }
+
+</script>
+
+</body>
+</html>
