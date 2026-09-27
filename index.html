@@ -1714,170 +1714,171 @@
   // ==========================================================
   // ENVOI QUESTION
   // ==========================================================
+async function sendQuestion() {
 
-  async function sendQuestion() {
+  const question = questionInput.value.trim();
 
-    const question =
-      questionInput.value.trim();
+  if (!question) {
+    return;
+  }
 
+  stopSpeaking();
 
-    if (!question) {
+  addMessage(question, "user");
 
-      return;
+  questionInput.value = "";
+
+  addTyping();
+
+  sendBtn.disabled = true;
+  micBtn.disabled = true;
+
+  try {
+
+    console.log("ACCESS PATH — question envoyée :", question);
+
+    const response = await fetch(API_URL, {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify({
+        action: "chat",
+        question: question,
+        language: currentLanguage,
+        history: conversationHistory
+      })
+    });
+
+    console.log(
+      "ACCESS PATH — statut API :",
+      response.status
+    );
+
+    /*
+      On récupère d'abord le texte brut.
+      Cela permet d'afficher correctement une erreur
+      même si Vercel renvoie autre chose qu'un JSON.
+    */
+
+    const rawText = await response.text();
+
+    console.log(
+      "ACCESS PATH — réponse serveur :",
+      rawText
+    );
+
+    let data = null;
+
+    try {
+      data = JSON.parse(rawText);
+    } catch (jsonError) {
+
+      throw new Error(
+        "Le serveur a retourné une réponse invalide : " +
+        rawText.substring(0, 500)
+      );
 
     }
 
+    removeTyping();
 
-    stopSpeaking();
+    if (!response.ok) {
 
+      throw new Error(
+        data?.error ||
+        `Erreur API HTTP ${response.status}`
+      );
+
+    }
+
+    if (!data.success) {
+
+      throw new Error(
+        data?.error ||
+        "ACCESS PATH n'a pas pu répondre."
+      );
+
+    }
+
+    const answer =
+      data.answer ||
+      "Je n'ai pas pu générer une réponse.";
+
+
+    /*
+      MÉMOIRE DE CONVERSATION
+    */
+
+    conversationHistory.push({
+      role: "user",
+      text: question
+    });
+
+    conversationHistory.push({
+      role: "assistant",
+      text: answer
+    });
+
+    conversationHistory =
+      conversationHistory.slice(-12);
+
+
+    /*
+      AFFICHAGE
+    */
 
     addMessage(
-      question,
-      "user"
+      answer,
+      "assistant"
     );
 
 
-    questionInput.value = "";
+    /*
+      VOIX
+    */
 
-
-    addTyping();
-
-
-    sendBtn.disabled = true;
-
-    micBtn.disabled = true;
-
-
-    try {
-
-      const response =
-        await fetch(
-          API_URL,
-          {
-            method: "POST",
-
-            headers: {
-              "Content-Type":
-                "application/json"
-            },
-
-            body: JSON.stringify({
-
-              action: "chat",
-
-              question,
-
-              language:
-                currentLanguage,
-
-              history:
-                conversationHistory
-
-            })
-
-          }
-        );
-
-
-      const data =
-        await response.json();
-
-
-      removeTyping();
-
-
-      if (
-        !response.ok ||
-        !data.success
-      ) {
-
-        throw new Error(
-          data.error ||
-          "Erreur du serveur."
-        );
-
-      }
-
-
-      const answer =
-        data.answer ||
-        "Je n'ai pas pu générer une réponse.";
-
-
-      /*
-        On garde seulement un historique
-        raisonnable pour éviter des requêtes
-        trop lourdes.
-      */
-
-      conversationHistory.push({
-
-        role: "user",
-
-        text: question
-
-      });
-
-
-      conversationHistory.push({
-
-        role: "assistant",
-
-        text: answer
-
-      });
-
-
-      conversationHistory =
-        conversationHistory.slice(-12);
-
-
-      addMessage(
-        answer,
-        "assistant"
-      );
-
-
-      /*
-        Lecture automatique si la question
-        venait du mode vocal ou si le navigateur
-        permet la lecture automatique.
-      */
-
-      speak(answer);
-
-
-    }
-
-    catch (error) {
-
-      console.error(
-        "ACCESS PATH:",
-        error
-      );
-
-
-      removeTyping();
-
-
-      addMessage(
-        "Désolé, je rencontre actuellement un problème technique. Vérifiez votre connexion et réessayez.",
-        "assistant"
-      );
-
-    }
-
-
-    finally {
-
-      sendBtn.disabled = false;
-
-      micBtn.disabled =
-        !recognition;
-
-    }
+    speak(answer);
 
   }
+
+  catch (error) {
+
+    console.error(
+      "ACCESS PATH — ERREUR COMPLÈTE :",
+      error
+    );
+
+    removeTyping();
+
+
+    /*
+      IMPORTANT :
+      on affiche maintenant la vraie erreur
+      au lieu de cacher le problème.
+    */
+
+    addMessage(
+      "⚠️ ACCESS PATH : " +
+      (error.message ||
+       "Une erreur inconnue est survenue."),
+      "assistant"
+    );
+
+  }
+
+  finally {
+
+    sendBtn.disabled = false;
+
+    micBtn.disabled =
+      !recognition;
+
+  }
+
+}
 
 
   // ==========================================================
