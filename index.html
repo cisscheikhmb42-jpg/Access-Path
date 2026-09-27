@@ -1,319 +1,499 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>ACCESS PATH — Accessibility Assistant</title>
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background: #f5f7fb;
-      color: #172033;
-      transition: 0.2s;
-    }
-
-    header {
-      background: #ffffff;
-      padding: 20px 8%;
-      border-bottom: 1px solid #e5e7eb;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: 800;
-      color: #155eef;
-    }
-
-    .badge {
-      background: #eaf2ff;
-      color: #155eef;
-
-      padding: 8px 14px;
-      border-radius: 20px;
-
-      font-size: 13px;
-      font-weight: bold;
-    }
-
-    .hero {
-      max-width: 1100px;
-      margin: 50px auto 30px;
-      padding: 0 20px;
-
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 46px;
-      margin-bottom: 15px;
-    }
-
-    .hero h1 span {
-      color: #155eef;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: #667085;
-
-      max-width: 700px;
-      margin: auto;
-
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
-
-    .upload-box {
-      display: block;
-
-      background: white;
-
-      border: 2px dashed #b8c5dc;
-      border-radius: 20px;
-
-      padding: 45px;
-
-      text-align: center;
-
-      cursor: pointer;
-
-      transition: 0.2s;
-    }
-
-    .upload-box:hover {
-      border-color: #155eef;
-      background: #f8faff;
-    }
-
-    .upload-icon {
-      font-size: 45px;
-      margin-bottom: 15px;
-    }
-
-    .upload-box h2 {
-      margin-bottom: 10px;
-    }
-
-    .upload-box p {
-      color: #667085;
-      margin-bottom: 20px;
-    }
-
-    input[type="file"] {
-      display: none;
-    }
-
-    .button {
-      display: inline-block;
-
-      border: none;
-
-      background: #155eef;
-      color: white;
-
-      padding: 14px 24px;
-
-      border-radius: 10px;
-
-      font-size: 16px;
-      font-weight: bold;
-
-      cursor: pointer;
-    }
-
-    .button:hover {
-      background: #0d47c7;
-    }
-
-    #fileName {
-      margin-top: 15px;
-
-      font-weight: bold;
-
-      color: #155eef;
-
-      word-break: break-word;
-    }
-
-    #results {
-      display: none;
-
-      margin-top: 30px;
-    }
-
-    .analysis-title {
-      margin-bottom: 20px;
-
-      font-size: 28px;
-    }
-
-    .grid {
-      display: grid;
-
-      grid-template-columns: repeat(2, 1fr);
-
-      gap: 18px;
-    }
-
-    .card {
-      background: white;
-
-      padding: 24px;
-
-      border-radius: 16px;
-
-      border: 1px solid #e5e7eb;
-
-      box-shadow:
-        0 5px 20px rgba(0,0,0,0.04);
-    }
-
-    .card h3 {
-      margin-bottom: 12px;
-    }
-
-    .card p {
-      color: #667085;
-
-      line-height: 1.6;
-    }
-
-    .card ul {
-      padding-left: 20px;
-
-      line-height: 1.9;
-
-      color: #475467;
-    }
-
-    .warning {
-      border-left: 5px solid #f79009;
-    }
-
-    .accessibility {
-      margin-top: 25px;
-
-      background: #172033;
-
-      color: white;
-
-      padding: 25px;
-
-      border-radius: 16px;
-    }
-
-    .accessibility h3 {
-      margin-bottom: 15px;
-    }
-
-    .access-buttons {
-      display: flex;
-
-      gap: 10px;
-
-      flex-wrap: wrap;
-    }
-
-    .access-buttons button {
-      background: white;
-
-      color: #172033;
-
-      border: none;
-
-      padding: 10px 15px;
-
-      border-radius: 8px;
-
-      cursor: pointer;
-
-      font-weight: bold;
-    }
-
-    .loading {
-      text-align: center;
-
-      padding: 30px;
-    }
-
-    .loading-icon {
-      font-size: 40px;
-
-      margin-bottom: 15px;
-    }
-
-    footer {
-      text-align: center;
-
-      padding: 40px;
-
-      color: #667085;
-
-      font-size: 14px;
-    }
-
-    @media (max-width: 700px) {
-
-      .hero h1 {
-        font-size: 34px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      header {
-        padding: 18px 5%;
-      }
-
-      .badge {
-        font-size: 11px;
-      }
-
-      .upload-box {
-        padding: 30px 20px;
-      }
-
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ACCESS PATH — Assistant administratif du Sénégal</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f8fafc;
+  color: #111827;
+  line-height: 1.6;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin: auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 18px 0;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.logo span {
+  color: #16a34a;
+}
+
+.badge {
+  background: #ecfdf3;
+  color: #15803d;
+  padding: 7px 12px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  text-align: center;
+  padding: 65px 20px 45px;
+}
+
+.hero h1 {
+  font-size: clamp(34px, 6vw, 58px);
+  line-height: 1.05;
+  margin: 0 auto 20px;
+  max-width: 850px;
+  letter-spacing: -2px;
+}
+
+.hero h1 span {
+  color: #16a34a;
+}
+
+.hero p {
+  max-width: 720px;
+  margin: auto;
+  color: #667085;
+  font-size: 18px;
+}
+
+/* =========================
+   MENU PRINCIPAL
+========================= */
+
+.main-actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 30px auto 60px;
+  max-width: 900px;
+}
+
+.action-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
+  padding: 30px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.action-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.07);
+}
+
+.action-icon {
+  font-size: 38px;
+}
+
+.action-card h2 {
+  margin: 12px 0 8px;
+}
+
+.action-card p {
+  color: #667085;
+  margin: 0;
+}
+
+/* =========================
+   GUIDE
+========================= */
+
+.guide-section {
+  max-width: 1000px;
+  margin: 40px auto 80px;
+  padding: 0 20px;
+}
+
+.guide-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.guide-badge {
+  display: inline-block;
+  background: #ecfdf3;
+  color: #15803d;
+  padding: 7px 14px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.guide-header h2 {
+  font-size: 32px;
+  margin: 14px 0 8px;
+}
+
+.guide-header p {
+  max-width: 700px;
+  margin: auto;
+  color: #667085;
+}
+
+.search-box {
+  display: flex;
+  max-width: 800px;
+  margin: 25px auto;
+  gap: 10px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 17px;
+  border: 1px solid #d0d5dd;
+  border-radius: 14px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-box input:focus {
+  border-color: #16a34a;
+}
+
+.primary-btn {
+  background: #111827;
+  color: white;
+  border: none;
+  padding: 0 22px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.quick-demarches {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 25px 0;
+}
+
+.quick-demarches button {
+  background: white;
+  border: 1px solid #d0d5dd;
+  padding: 10px 15px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.quick-demarches button:hover {
+  background: #f3f4f6;
+}
+
+/* =========================
+   RESULTAT DEMARCHE
+========================= */
+
+.demarche-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
+  padding: 30px;
+  margin-top: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.05);
+}
+
+.demarche-title {
+  font-size: 28px;
+  margin: 0 0 25px;
+}
+
+.demarche-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.info-card {
+  background: #f8fafc;
+  border-radius: 15px;
+  padding: 18px;
+}
+
+.info-card strong {
+  display: block;
+  margin-bottom: 7px;
+}
+
+.info-card span {
+  color: #475467;
+}
+
+.demarche-card h4 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.list {
+  padding-left: 22px;
+}
+
+.list li {
+  margin-bottom: 7px;
+}
+
+.warning {
+  margin-top: 25px;
+  padding: 17px;
+  border-radius: 14px;
+  background: #fffaeb;
+  color: #92400e;
+}
+
+.source {
+  margin-top: 20px;
+  padding: 17px;
+  border-radius: 14px;
+  background: #eff8ff;
+  color: #175985;
+}
+
+.voice-area {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.voice-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.voice-buttons button {
+  border: 1px solid #d0d5dd;
+  background: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.no-result {
+  background: white;
+  border-radius: 18px;
+  padding: 30px;
+  text-align: center;
+  color: #667085;
+}
+
+/* =========================
+   DOCUMENT
+========================= */
+
+.document-section {
+  max-width: 850px;
+  margin: 60px auto 100px;
+  padding: 0 20px;
+}
+
+.document-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
+  padding: 30px;
+  text-align: center;
+}
+
+.document-card h2 {
+  margin-top: 0;
+}
+
+.document-card p {
+  color: #667085;
+}
+
+.upload-box {
+  display: block;
+  border: 2px dashed #cbd5e1;
+  border-radius: 18px;
+  padding: 35px 20px;
+  margin-top: 25px;
+  background: #f8fafc;
+}
+
+.upload-box input {
+  margin-top: 15px;
+}
+
+.selected-file {
+  margin-top: 15px;
+  font-weight: 700;
+  color: #166534;
+}
+
+/* =========================
+   ANALYSE
+========================= */
+
+.loading {
+  margin-top: 25px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.analysis-results {
+  margin-top: 30px;
+  text-align: left;
+}
+
+.result-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 22px;
+  margin-bottom: 15px;
+}
+
+.result-card h3 {
+  margin-top: 0;
+}
+
+.result-card ul {
+  padding-left: 22px;
+}
+
+.accessibility-card {
+  background: #ecfdf3;
+  border-color: #bbf7d0;
+}
+
+.accessibility-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.accessibility-buttons button {
+  border: none;
+  background: #111827;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  color: #667085;
+  border-top: 1px solid #e5e7eb;
+  background: white;
+}
+
+footer strong {
+  color: #111827;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+
+  .main-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .search-box {
+    flex-direction: column;
+  }
+
+  .primary-btn {
+    padding: 15px;
+  }
+
+  .demarche-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-inner {
+    flex-direction: column;
+  }
+
+  .hero {
+    padding-top: 45px;
+  }
+
+}
+
+</style>
 </head>
 
 
 <body>
 
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
-  <div class="logo">
-    ACCESS PATH
-  </div>
+  <div class="container header-inner">
 
-  <div class="badge">
-    AI Accessibility Assistant
+    <div class="logo">
+      ACCESS <span>PATH</span>
+    </div>
+
+    <div class="badge">
+      🇸🇳 AI Accessibility Assistant
+    </div>
+
   </div>
 
 </header>
 
 
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero">
 
@@ -322,966 +502,1518 @@
     <span>accessible à tous.</span>
   </h1>
 
-
   <p>
-
-    ACCESS PATH utilise l'intelligence artificielle
-    pour transformer les documents complexes et les
-    procédures administratives en informations simples,
-    compréhensibles et accessibles.
-
+    Un assistant IA qui aide les citoyens à comprendre
+    les démarches administratives et leurs documents,
+    simplement et étape par étape.
   </p>
 
 </section>
 
 
+<!-- =========================
+     ACTIONS
+========================= -->
 
-<main class="container">
+<section class="container">
 
+  <div class="main-actions">
 
-  <!-- ========================= -->
-  <!-- ZONE DE TÉLÉCHARGEMENT -->
-  <!-- ========================= -->
+    <div
+      class="action-card"
+      onclick="document.getElementById('guide-demarches').scrollIntoView({behavior:'smooth'})"
+    >
 
-  <label
-    class="upload-box"
-    for="document"
-  >
+      <div class="action-icon">🔎</div>
 
-    <div class="upload-icon">
-      📄
+      <h2>
+        Trouver une démarche
+      </h2>
+
+      <p>
+        Carte d'identité, passeport, casier judiciaire,
+        nationalité et autres démarches.
+      </p>
+
     </div>
 
 
-    <h2>
-      Analyser un document
-    </h2>
-
-
-    <p>
-
-      Importez un PDF, une image ou
-      un document administratif.
-
-    </p>
-
-
-    <span class="button">
-
-      Choisir un document
-
-    </span>
-
-
-    <input
-      type="file"
-      id="document"
-
-      accept="application/pdf,image/jpeg,image/png,image/webp"
+    <div
+      class="action-card"
+      onclick="document.getElementById('document-section').scrollIntoView({behavior:'smooth'})"
     >
 
+      <div class="action-icon">📄</div>
 
-    <div id="fileName"></div>
+      <h2>
+        Analyser un document
+      </h2>
 
-  </label>
+      <p>
+        Importez un document et laissez l'IA
+        vous expliquer son contenu.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
 
 
+<!-- =========================
+     GUIDE ADMINISTRATIF
+========================= -->
 
-  <!-- ========================= -->
-  <!-- RÉSULTATS -->
-  <!-- ========================= -->
+<section
+  class="guide-section"
+  id="guide-demarches"
+>
 
-  <div id="results">
+  <div class="guide-header">
 
+    <span class="guide-badge">
+      🇸🇳 GUIDE ADMINISTRATIF DU SÉNÉGAL
+    </span>
 
-    <h2 class="analysis-title">
-
-      🧠 Analyse ACCESS PATH
-
+    <h2>
+      Quelle démarche recherchez-vous ?
     </h2>
 
+    <p>
+      ACCESS PATH vous indique les pièces à fournir,
+      où effectuer la démarche, le coût, le délai
+      et les étapes principales.
+    </p>
 
   </div>
 
 
-</main>
+  <div class="search-box">
+
+    <input
+      type="text"
+      id="demarcheSearch"
+      placeholder="Exemple : carte d'identité, passeport..."
+      autocomplete="off"
+    >
+
+    <button
+      class="primary-btn"
+      onclick="rechercherDemarche()"
+    >
+      🔎 Rechercher
+    </button>
+
+  </div>
 
 
+  <div class="quick-demarches">
+
+    <button onclick="afficherDemarche('cni')">
+      🪪 Carte d'identité
+    </button>
+
+    <button onclick="afficherDemarche('passeport')">
+      🌍 Passeport
+    </button>
+
+    <button onclick="afficherDemarche('casier')">
+      ⚖️ Casier judiciaire
+    </button>
+
+    <button onclick="afficherDemarche('nationalite')">
+      🇸🇳 Nationalité
+    </button>
+
+    <button onclick="afficherDemarche('residence')">
+      🏠 Résidence
+    </button>
+
+    <button onclick="afficherDemarche('celibat')">
+      💍 Célibat
+    </button>
+
+    <button onclick="afficherDemarche('vie')">
+      👤 Certificat de vie
+    </button>
+
+    <button onclick="afficherDemarche('etranger')">
+      🛂 Carte étranger
+    </button>
+
+  </div>
+
+
+  <div id="demarcheResults"></div>
+
+</section>
+
+
+<!-- =========================
+     ANALYSE DOCUMENT
+========================= -->
+
+<section
+  class="document-section"
+  id="document-section"
+>
+
+  <div class="document-card">
+
+    <h2>
+      📄 Analyser un document
+    </h2>
+
+    <p>
+      Importez un PDF ou une image.
+      ACCESS PATH utilise l'IA pour comprendre
+      et simplifier le document.
+    </p>
+
+
+    <div class="upload-box">
+
+      <strong>
+        Analyser un document administratif
+      </strong>
+
+      <br>
+
+      <span>
+        PDF, JPG, PNG ou WEBP — maximum 3 Mo
+      </span>
+
+      <br>
+
+      <input
+        type="file"
+        id="fileInput"
+        accept="application/pdf,image/jpeg,image/png,image/webp"
+      >
+
+      <div
+        id="selectedFile"
+        class="selected-file"
+      ></div>
+
+    </div>
+
+
+    <div id="analysisArea"></div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-  ACCESS PATH —
-  AI-powered accessibility for everyone.
+  <strong>ACCESS PATH</strong>
+
+  <br>
+
+  Assistant IA pour l'accessibilité
+  et l'inclusion numérique.
+
+  <br><br>
+
+  🇸🇳 Prototype — Sénégal — 2026
 
 </footer>
 
 
-
 <script>
 
-
-/* =========================================
+/* =========================================================
    CONFIGURATION
-========================================= */
+========================================================= */
 
 const API_URL =
   "https://access-path-nu.vercel.app/api/analyze";
 
 
+/* =========================================================
+   BASE DES DÉMARCHES ADMINISTRATIVES
+========================================================= */
 
-/* =========================================
-   INITIALISATION
-========================================= */
+const DEMARCHES = {
 
-document.addEventListener(
-  "DOMContentLoaded",
-  function () {
+  cni: {
 
+    keywords: [
+      "carte",
+      "identité",
+      "identite",
+      "cni",
+      "carte nationale",
+      "piece identité",
+      "pièce identité"
+    ],
 
-    const input =
-      document.getElementById("document");
+    title:
+      "Carte nationale d'identité biométrique",
 
+    icon: "🪪",
 
-    const fileName =
-      document.getElementById("fileName");
+    who:
+      "Tout citoyen sénégalais âgé d'au moins 5 ans.",
 
+    documents: [
+      "Ancienne carte nationale d'identité numérisée",
+      "OU extrait de naissance datant de moins de 3 mois"
+    ],
 
-    const results =
-      document.getElementById("results");
+    place:
+      "Commissariat de police, brigade de gendarmerie, préfecture ou sous-préfecture dont relève le domicile.",
 
+    cost:
+      "Aucun coût général indiqué sur la fiche officielle pour l'établissement. En cas de perte, un timbre de 10 000 FCFA est indiqué.",
 
+    delay:
+      "Non précisé sur la fiche officielle.",
 
-    if (!input) {
+    steps: [
+      "Préparer l'ancienne CNI ou l'extrait de naissance.",
+      "Se rendre au lieu de dépôt compétent.",
+      "Déposer la demande.",
+      "Conserver le récépissé.",
+      "Retirer la carte avec le récépissé."
+    ],
 
-      console.error(
-        "ACCESS PATH : input document introuvable."
-      );
+    special:
+      "La CNI est valable 10 ans. En cas de perte : certificat de perte, timbre de 10 000 FCFA et extrait de naissance de moins de 3 mois.",
 
-      return;
-    }
+    source:
+      "Ministère de l'Intérieur et de la Sécurité publique — Carte nationale d'identité biométrique"
 
+  },
 
 
-    /* =========================================
-       SÉLECTION DU DOCUMENT
-    ========================================= */
+  passeport: {
 
-    input.addEventListener(
-      "change",
-      function () {
+    keywords: [
+      "passeport",
+      "passport",
+      "voyage",
+      "pass port"
+    ],
 
+    title:
+      "Passeport ordinaire",
 
-        const file =
-          this.files &&
-          this.files[0];
+    icon: "🌍",
 
+    who:
+      "Tout citoyen sénégalais peut demander un passeport ordinaire dès la naissance.",
 
-        if (!file) {
+    documents: [
+      "Original de la carte nationale d'identité",
+      "Copie certifiée conforme de la CNI",
+      "3 photos d'identité en couleur",
+      "Quittance attestant le paiement"
+    ],
 
-          return;
+    place:
+      "Commissariat de police dont relève le domicile.",
 
-        }
+    cost:
+      "20 000 FCFA.",
 
+    delay:
+      "2 semaines.",
 
+    steps: [
+      "Préparer la CNI et les photos.",
+      "Payer la somme demandée.",
+      "Obtenir la quittance.",
+      "Déposer la demande au commissariat compétent.",
+      "Attendre la délivrance du passeport."
+    ],
 
-        /*
-         AFFICHER IMMÉDIATEMENT LE NOM
-        */
+    special:
+      "À Dakar, le dépôt se fait sur rendez-vous. Le délai d'obtention du rendez-vous peut varier selon l'affluence.",
 
-        fileName.textContent =
-          "📎 Document sélectionné : " +
-          file.name;
+    source:
+      "Ministère de l'Intérieur et de la Sécurité publique — Passeport ordinaire"
 
+  },
 
 
-        console.log(
-          "ACCESS PATH — fichier sélectionné :",
-          file.name
-        );
+  casier: {
 
+    keywords: [
+      "casier",
+      "casier judiciaire",
+      "bulletin 3",
+      "bulletin n3",
+      "judiciaire"
+    ],
 
+    title:
+      "Casier judiciaire — Bulletin n°3",
 
-        /*
-         TYPES ACCEPTÉS
-        */
+    icon: "⚖️",
 
-        const allowedTypes = [
+    who:
+      "Toute personne née au Sénégal, tout Sénégalais né à l'étranger et tout étranger résidant au Sénégal.",
 
-          "application/pdf",
+    documents: [
+      "Acte de naissance",
+      "OU copie certifiée conforme de la carte nationale d'identité"
+    ],
 
-          "image/jpeg",
+    place:
+      "Greffe du tribunal de grande instance du lieu de naissance pour une personne née au Sénégal. Pour un Sénégalais né à l'étranger ou un étranger résidant au Sénégal : greffe de la Cour d'Appel de Dakar.",
 
-          "image/png",
+    cost:
+      "200 FCFA.",
 
-          "image/webp"
+    delay:
+      "1 jour.",
 
-        ];
+    steps: [
+      "Préparer l'acte de naissance ou la CNI.",
+      "Se rendre au greffe compétent.",
+      "Déposer la demande.",
+      "Payer les frais de délivrance.",
+      "Retirer le bulletin."
+    ],
 
+    special:
+      "Pour obtenir un autre extrait, il faut reprendre la procédure.",
 
+    source:
+      "Ministère de la Justice du Sénégal — Casier judiciaire"
 
-        if (
-          !allowedTypes.includes(
-            file.type
-          )
-        ) {
+  },
 
 
-          fileName.textContent =
-            "⚠️ Format non accepté : " +
-            file.name;
+  nationalite: {
 
+    keywords: [
+      "nationalité",
+      "nationalite",
+      "certificat nationalité",
+      "certificat de nationalité",
+      "nationalité sénégalaise"
+    ],
 
-          alert(
-            "Veuillez choisir un PDF, JPG, JPEG, PNG ou WEBP."
-          );
+    title:
+      "Certificat de nationalité sénégalaise",
 
+    icon: "🇸🇳",
 
-          return;
+    who:
+      "Les conditions dépendent de la situation du demandeur et du fondement de la nationalité.",
 
-        }
+    documents: [
+      "Acte de naissance",
+      "Pièces permettant d'établir la nationalité selon la situation",
+      "Documents complémentaires selon le cas"
+    ],
 
+    place:
+      "Tribunal d'Instance compétent selon la procédure.",
 
+    cost:
+      "2 300 FCFA pour l'établissement du certificat de nationalité dans la procédure par mariage décrite par le Ministère de la Justice.",
 
-        /*
-         TAILLE MAXIMUM
-        */
+    delay:
+      "Variable selon la procédure.",
 
-        if (
-          file.size >
-          3000000
-        ) {
+    steps: [
+      "Identifier le fondement de la demande.",
+      "Préparer les documents correspondant à sa situation.",
+      "Déposer la demande auprès du service compétent.",
+      "Suivre la procédure.",
+      "Retirer le certificat."
+    ],
 
+    special:
+      "Le coût et les documents peuvent varier selon la situation juridique du demandeur.",
 
-          fileName.textContent =
-            "⚠️ Fichier trop volumineux : " +
-            file.name;
+    source:
+      "Ministère de la Justice du Sénégal — Nationalité"
 
+  },
 
-          alert(
-            "Pour cette démonstration, choisissez un fichier de moins de 3 Mo."
-          );
 
+  residence: {
 
-          return;
+    keywords: [
+      "résidence",
+      "residence",
+      "certificat résidence",
+      "certificat de résidence",
+      "domicile"
+    ],
 
-        }
+    title:
+      "Certificat de résidence",
 
+    icon: "🏠",
 
+    who:
+      "Personne ayant besoin de justifier officiellement son lieu de résidence.",
 
-        /*
-         AFFICHER CHARGEMENT
-        */
+    documents: [
+      "Pièce d'identité",
+      "Justificatifs demandés par le service compétent"
+    ],
 
-        results.style.display =
-          "block";
+    place:
+      "Service administratif compétent du lieu de résidence.",
 
+    cost:
+      "À vérifier auprès du service compétent avant le déplacement.",
 
-        results.innerHTML = `
+    delay:
+      "À vérifier auprès du service compétent.",
 
-          <div class="card loading">
+    steps: [
+      "Préparer sa pièce d'identité.",
+      "Vérifier les justificatifs nécessaires.",
+      "Se présenter au service compétent.",
+      "Déposer la demande.",
+      "Retirer le certificat."
+    ],
 
-            <div class="loading-icon">
-              🤖
-            </div>
+    special:
+      "Le tarif et les pièces peuvent dépendre du service ou de la collectivité concernée.",
 
-            <h3>
-              Analyse ACCESS PATH en cours...
-            </h3>
+    source:
+      "Sénégal Services — État civil"
 
-            <p style="margin-top:10px;">
+  },
 
-              L'intelligence artificielle
-              analyse votre document.
 
-            </p>
+  celibat: {
 
-            <p style="margin-top:10px;">
+    keywords: [
+      "célibat",
+      "celibat",
+      "certificat célibat",
+      "certificat de célibat"
+    ],
 
-              ⏳ Veuillez patienter...
+    title:
+      "Certificat de célibat",
 
-            </p>
+    icon: "💍",
 
-          </div>
+    who:
+      "Personne ayant besoin de justifier son état matrimonial.",
 
-        `;
+    documents: [
+      "Pièce d'identité",
+      "Documents d'état civil demandés par le service compétent"
+    ],
 
+    place:
+      "Service d'état civil compétent.",
 
+    cost:
+      "À vérifier auprès du service compétent.",
 
-        results.scrollIntoView({
-          behavior: "smooth"
-        });
+    delay:
+      "À vérifier auprès du service compétent.",
 
+    steps: [
+      "Préparer les pièces d'état civil.",
+      "Se présenter au service compétent.",
+      "Déposer la demande.",
+      "Effectuer le paiement éventuel.",
+      "Retirer le certificat."
+    ],
 
+    special:
+      "Les conditions peuvent dépendre de la situation d'état civil.",
 
-        /*
-         LANCER ANALYSE IA
-        */
+    source:
+      "Sénégal Services — État civil"
 
-        analyserDocument(file);
+  },
 
 
-      }
-    );
+  vie: {
 
+    keywords: [
+      "vie",
+      "certificat vie",
+      "certificat de vie",
+      "vivant"
+    ],
 
+    title:
+      "Certificat de vie individuel",
 
-    /* =========================================
-       ANALYSER LE DOCUMENT
-    ========================================= */
+    icon: "👤",
 
-    async function analyserDocument(
-      file
-    ) {
+    who:
+      "Personne ayant besoin d'attester officiellement qu'elle est en vie.",
 
+    documents: [
+      "Pièce d'identité",
+      "Documents demandés par le service d'état civil"
+    ],
 
-      try {
+    place:
+      "Service d'état civil compétent.",
 
+    cost:
+      "À vérifier auprès du service compétent.",
 
-        /*
-         CONVERTIR EN BASE64
-        */
+    delay:
+      "À vérifier auprès du service compétent.",
 
-        const base64 =
-          await convertirBase64(
-            file
-          );
+    steps: [
+      "Préparer sa pièce d'identité.",
+      "Se présenter au service d'état civil.",
+      "Faire établir le certificat.",
+      "Retirer le document."
+    ],
 
+    special:
+      "Sénégal Services répertorie cette démarche parmi les démarches d'état civil.",
 
+    source:
+      "Sénégal Services — État civil"
 
-        console.log(
-          "ACCESS PATH — document converti."
-        );
+  },
 
 
+  etranger: {
 
-        /*
-         ENVOYER À VERCEL
-        */
+    keywords: [
+      "étranger",
+      "etranger",
+      "carte étranger",
+      "carte d'identité étranger",
+      "carte de séjour"
+    ],
 
-        const response =
-          await fetch(
-            API_URL,
-            {
+    title:
+      "Carte d'identité d'étranger",
 
-              method: "POST",
+    icon: "🛂",
 
-              headers: {
+    who:
+      "Étranger résidant au Sénégal selon les conditions applicables.",
 
-                "Content-Type":
-                  "application/json"
+    documents: [
+      "Demande manuscrite adressée au Ministre chargé de l'Intérieur",
+      "Copie des cinq premières pages du passeport valide",
+      "Extrait du casier judiciaire du pays d'origine de moins de 3 mois",
+      "Extrait de naissance de moins de 6 mois",
+      "Certificat médical de moins de 3 mois",
+      "Contrat de travail ou justificatif correspondant à la situation",
+      "3 photos d'identité",
+      "Timbre fiscal de 15 000 FCFA",
+      "Quittance de la caution de rapatriement selon le pays"
+    ],
 
-              },
+    place:
+      "Division des Polices des Étrangers et de la Protection des Titres de Voyage (DPETV).",
 
-              body:
-                JSON.stringify({
+    cost:
+      "Timbre fiscal de 15 000 FCFA + caution de rapatriement dont le montant varie selon le pays.",
 
-                  mimeType:
-                    file.type,
+    delay:
+      "Non précisé sur la fiche officielle.",
 
-                  data:
-                    base64,
+    steps: [
+      "Préparer les documents.",
+      "Déposer la demande à la DPETV.",
+      "Le dossier suit le circuit administratif.",
+      "Production et signature de la carte.",
+      "Distribution de la carte."
+    ],
 
-                  fileName:
-                    file.name
+    special:
+      "Les documents nécessaires varient notamment selon la situation professionnelle ou scolaire du demandeur.",
 
-                })
+    source:
+      "Ministère de l'Intérieur et de la Sécurité publique — Carte d'identité d'étranger"
 
-            }
-          );
+  }
 
+};
 
 
-        /*
-         RÉCUPÉRER RÉPONSE
-        */
+/* =========================================================
+   AFFICHER UNE DEMARCHE
+========================================================= */
 
-        const data =
-          await response.json();
+function afficherDemarche(id) {
 
+  const d = DEMARCHES[id];
 
+  if (!d) return;
 
-        console.log(
-          "ACCESS PATH — réponse API :",
-          data
-        );
+  const container =
+    document.getElementById("demarcheResults");
 
+  container.innerHTML = `
 
+    <div class="demarche-card">
 
-        if (
-          !response.ok
-        ) {
+      <h3 class="demarche-title">
+        ${d.icon} ${d.title}
+      </h3>
 
-          throw new Error(
+      <div class="demarche-grid">
 
-            data.error ||
-            "Erreur pendant l'analyse."
+        <div class="info-card">
+          <strong>👤 Qui peut la demander ?</strong>
+          <span>${d.who}</span>
+        </div>
 
-          );
+        <div class="info-card">
+          <strong>📍 Où faire la démarche ?</strong>
+          <span>${d.place}</span>
+        </div>
 
-        }
+        <div class="info-card">
+          <strong>💰 Coût</strong>
+          <span>${d.cost}</span>
+        </div>
 
+        <div class="info-card">
+          <strong>⏳ Délai</strong>
+          <span>${d.delay}</span>
+        </div>
 
+      </div>
 
-        /*
-         AFFICHER RÉSULTAT
-        */
 
-        afficherResultat(
-          data.analysis
-        );
+      <h4>📋 Documents à fournir</h4>
 
+      <ul class="list">
 
-      }
+        ${d.documents
+          .map(item => `<li>${item}</li>`)
+          .join("")}
 
+      </ul>
 
-      catch (
-        error
-      ) {
 
+      <h4>🪜 Étapes à suivre</h4>
 
-        console.error(
-          "ACCESS PATH — erreur :",
-          error
-        );
+      <ol class="list">
 
+        ${d.steps
+          .map(item => `<li>${item}</li>`)
+          .join("")}
 
+      </ol>
 
-        results.innerHTML = `
 
-          <div class="card warning">
+      <div class="warning">
 
-            <h3>
-              ⚠️ Impossible d'analyser le document
-            </h3>
+        ⚠️ <strong>À savoir</strong><br>
 
+        ${d.special}
 
-            <p style="margin-top:10px;">
+      </div>
 
-              ${escapeHtml(
-                error.message
-              )}
 
-            </p>
+      <div class="source">
 
+        🔗 <strong>Source officielle :</strong><br>
 
-            <p style="margin-top:10px;">
+        ${d.source}
 
-              Vérifiez votre connexion
-              puis réessayez.
+        <br><br>
 
-            </p>
+        <small>
+          Les informations administratives peuvent évoluer.
+          Vérifiez toujours les informations officielles avant votre déplacement.
+        </small>
 
-          </div>
+      </div>
 
-        `;
 
-      }
+      <div class="voice-area">
 
-    }
+        <strong>🔊 Écouter cette information</strong>
 
+        <div class="voice-buttons">
 
+          <button onclick="lireDemarche('${id}', 'fr')">
+            🇫🇷 Français
+          </button>
 
-    /* =========================================
-       CONVERTIR FICHIER EN BASE64
-    ========================================= */
+          <button onclick="lireDemarche('${id}', 'en')">
+            🇬🇧 English
+          </button>
 
-    function convertirBase64(
-      file
-    ) {
-
-
-      return new Promise(
-        function (
-          resolve,
-          reject
-        ) {
-
-
-          const reader =
-            new FileReader();
-
-
-
-          reader.onload =
-            function () {
-
-
-              const result =
-                reader.result;
-
-
-              const base64 =
-                result.split(",")[1];
-
-
-              resolve(
-                base64
-              );
-
-            };
-
-
-
-          reader.onerror =
-            function () {
-
-
-              reject(
-
-                new Error(
-                  "Impossible de lire le fichier."
-                )
-
-              );
-
-            };
-
-
-
-          reader.readAsDataURL(
-            file
-          );
-
-        }
-      );
-
-    }
-
-
-
-    /* =========================================
-       AFFICHER RÉSULTAT IA
-    ========================================= */
-
-    function afficherResultat(
-      analysis
-    ) {
-
-
-      const documents =
-        Array.isArray(
-          analysis.documents
-        )
-          ? analysis.documents
-          : [];
-
-
-
-      const steps =
-        Array.isArray(
-          analysis.steps
-        )
-          ? analysis.steps
-          : [];
-
-
-
-      const warnings =
-        Array.isArray(
-          analysis.warnings
-        )
-          ? analysis.warnings
-          : [];
-
-
-
-      results.innerHTML = `
-
-        <h2 class="analysis-title">
-
-          🧠 Analyse ACCESS PATH
-
-        </h2>
-
-
-
-        <div class="grid">
-
-
-          <!-- RÉSUMÉ -->
-
-          <div class="card">
-
-            <h3>
-
-              📌 ${
-                escapeHtml(
-                  analysis.title ||
-                  "Document analysé"
-                )
-              }
-
-            </h3>
-
-
-            <p>
-
-              ${
-                escapeHtml(
-                  analysis.summary ||
-                  "Aucun résumé disponible."
-                )
-              }
-
-            </p>
-
-          </div>
-
-
-
-          <!-- DOCUMENTS -->
-
-          <div class="card">
-
-            <h3>
-
-              📋 Documents nécessaires
-
-            </h3>
-
-
-            <ul>
-
-              ${
-                documents.length
-
-                  ? documents
-                      .map(
-                        function (
-                          item
-                        ) {
-
-                          return `
-                            <li>
-                              ${escapeHtml(
-                                item
-                              )}
-                            </li>
-                          `;
-
-                        }
-                      )
-                      .join("")
-
-                  : `
-
-                    <li>
-                      Aucun document identifié.
-                    </li>
-
-                  `
-              }
-
-            </ul>
-
-          </div>
-
-
-
-          <!-- ÉTAPES -->
-
-          <div class="card">
-
-            <h3>
-
-              🪜 Étapes à suivre
-
-            </h3>
-
-
-            <ul>
-
-              ${
-                steps.length
-
-                  ? steps
-                      .map(
-                        function (
-                          item
-                        ) {
-
-                          return `
-                            <li>
-                              ${escapeHtml(
-                                item
-                              )}
-                            </li>
-                          `;
-
-                        }
-                      )
-                      .join("")
-
-                  : `
-
-                    <li>
-                      Aucune étape identifiée.
-                    </li>
-
-                  `
-              }
-
-            </ul>
-
-          </div>
-
-
-
-          <!-- ALERTES -->
-
-          <div class="card warning">
-
-            <h3>
-
-              ⚠️ Points à vérifier
-
-            </h3>
-
-
-            <ul>
-
-              ${
-                warnings.length
-
-                  ? warnings
-                      .map(
-                        function (
-                          item
-                        ) {
-
-                          return `
-                            <li>
-                              ${escapeHtml(
-                                item
-                              )}
-                            </li>
-                          `;
-
-                        }
-                      )
-                      .join("")
-
-                  : `
-
-                    <li>
-                      Aucun point particulier identifié.
-                    </li>
-
-                  `
-              }
-
-            </ul>
-
-          </div>
-
+          <button onclick="lireDemarche('${id}', 'wo')">
+            🇸🇳 Wolof
+          </button>
 
         </div>
 
+      </div>
+
+    </div>
+
+  `;
+
+  container.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+}
 
 
-        <!-- ACCESSIBILITÉ -->
+/* =========================================================
+   RECHERCHE
+========================================================= */
 
-        <div class="accessibility">
+function rechercherDemarche() {
 
-          <h3>
+  const input =
+    document
+      .getElementById("demarcheSearch")
+      .value
+      .toLowerCase()
+      .trim();
 
-            ♿ Accessibilité
+  const container =
+    document.getElementById("demarcheResults");
 
-          </h3>
+  if (!input) {
 
+    container.innerHTML = `
+      <div class="no-result">
+        🔎 Écrivez une démarche.
+        <br><br>
+        Exemple :
+        <strong>passeport</strong>,
+        <strong>carte d'identité</strong>,
+        <strong>casier judiciaire</strong>.
+      </div>
+    `;
 
-          <p
-            style="
-              margin:15px 0;
-              line-height:1.6;
-            "
-          >
-
-            ${
-              escapeHtml(
-                analysis.accessibility ||
-                "Aucun conseil supplémentaire."
-              )
-            }
-
-          </p>
-
-
-          <div class="access-buttons">
-
-
-            <button
-              onclick="speakResult()"
-            >
-
-              🔊 Écouter
-
-            </button>
+    return;
+  }
 
 
-            <button
-              onclick="increaseText()"
-            >
-
-              🔤 Agrandir le texte
-
-            </button>
+  const mots =
+    input
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .split(/\s+/);
 
 
-            <button
-              onclick="highContrast()"
-            >
-
-              👁️ Contraste élevé
-
-            </button>
+  const resultats = [];
 
 
-          </div>
+  for (const id in DEMARCHES) {
 
-        </div>
+    const d = DEMARCHES[id];
 
-      `;
+    const texte = [
+      d.title,
+      ...d.keywords
+    ]
+      .join(" ")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
 
 
-      results.scrollIntoView({
-        behavior: "smooth"
+    const correspond =
+      mots.some(mot =>
+        mot.length > 2 &&
+        texte.includes(mot)
+      );
+
+
+    if (correspond) {
+
+      resultats.push({
+        id: id,
+        data: d
       });
 
     }
 
+  }
 
 
-    /* =========================================
-       PROTECTION HTML
-    ========================================= */
+  if (resultats.length === 0) {
 
-    function escapeHtml(
-      value
-    ) {
+    container.innerHTML = `
+      <div class="no-result">
+
+        ❌ Aucune démarche trouvée.
+
+        <br><br>
+
+        Essayez :
+        <br><br>
+
+        🪪 Carte d'identité<br>
+        🌍 Passeport<br>
+        ⚖️ Casier judiciaire<br>
+        🇸🇳 Nationalité<br>
+        🏠 Certificat de résidence
+
+      </div>
+    `;
+
+    return;
+  }
 
 
-      const div =
-        document.createElement(
-          "div"
-        );
+  if (resultats.length === 1) {
+
+    afficherDemarche(resultats[0].id);
+
+    return;
+
+  }
 
 
-      div.textContent =
-        value == null
-          ? ""
-          : String(value);
+  container.innerHTML = `
+
+    <div class="demarche-card">
+
+      <h3>
+        🔎 Plusieurs démarches correspondent
+      </h3>
+
+      ${resultats.map(r => `
+
+        <button
+          onclick="afficherDemarche('${r.id}')"
+          style="
+            display:block;
+            width:100%;
+            text-align:left;
+            background:white;
+            border:1px solid #e5e7eb;
+            border-radius:12px;
+            padding:17px;
+            margin:8px 0;
+            cursor:pointer;
+            font-size:15px;
+          "
+        >
+
+          ${r.data.icon}
+          <strong>
+            ${r.data.title}
+          </strong>
+
+        </button>
+
+      `).join("")}
+
+    </div>
+
+  `;
+
+}
 
 
-      return div.innerHTML;
+/* =========================================================
+   TOUCHE ENTREE
+========================================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
+
+    const search =
+      document.getElementById("demarcheSearch");
+
+    if (search) {
+
+      search.addEventListener(
+        "keydown",
+        function(event) {
+
+          if (event.key === "Enter") {
+
+            rechercherDemarche();
+
+          }
+
+        }
+      );
 
     }
-
-
-
-    /* =========================================
-       ACCESSIBILITÉ
-    ========================================= */
-
-    window.speakResult =
-      function () {
-
-
-        if (
-          !(
-            "speechSynthesis"
-            in window
-          )
-        ) {
-
-
-          alert(
-            "La lecture vocale n'est pas disponible sur ce navigateur."
-          );
-
-
-          return;
-
-        }
-
-
-
-        const speech =
-          new SpeechSynthesisUtterance(
-            results.innerText
-          );
-
-
-        speech.lang =
-          "fr-FR";
-
-
-        speech.rate =
-          0.9;
-
-
-        window.speechSynthesis.cancel();
-
-
-        window.speechSynthesis.speak(
-          speech
-        );
-
-      };
-
-
-
-    window.increaseText =
-      function () {
-
-
-        document.body.style.fontSize =
-          "19px";
-
-      };
-
-
-
-    window.highContrast =
-      function () {
-
-
-        if (
-          document.body.style.backgroundColor ===
-          "black"
-        ) {
-
-
-          document.body.style.backgroundColor =
-            "#f5f7fb";
-
-
-          document.body.style.color =
-            "#172033";
-
-
-        }
-
-        else {
-
-
-          document.body.style.backgroundColor =
-            "black";
-
-
-          document.body.style.color =
-            "white";
-
-        }
-
-      };
-
 
   }
 );
 
-</script>
 
+/* =========================================================
+   VOIX
+========================================================= */
+
+function lireDemarche(id, langue) {
+
+  const d = DEMARCHES[id];
+
+  if (!d) return;
+
+  window.speechSynthesis.cancel();
+
+
+  let texte = "";
+
+
+  if (langue === "en") {
+
+    texte = `
+      ${d.title}.
+      Who can apply: ${d.who}.
+      Documents required: ${d.documents.join(", ")}.
+      Where to apply: ${d.place}.
+      Cost: ${d.cost}.
+      Processing time: ${d.delay}.
+      Steps: ${d.steps.join(". ")}.
+      Important information: ${d.special}.
+    `;
+
+  }
+
+  else if (langue === "wo") {
+
+    /*
+      Version prototype :
+      le navigateur utilise une voix compatible disponible.
+      Une vraie voix Wolof dédiée sera ajoutée dans la prochaine version.
+    */
+
+    texte = `
+      ${d.title}.
+      Li nga wara def:
+      ${d.documents.join(", ")}.
+      Fii nga wara dem:
+      ${d.place}.
+      Njëg:
+      ${d.cost}.
+      Tey nga xam:
+      ${d.special}.
+    `;
+
+  }
+
+  else {
+
+    texte = `
+      ${d.title}.
+      Qui peut faire cette démarche ?
+      ${d.who}.
+      Documents nécessaires :
+      ${d.documents.join(", ")}.
+      Où faire la démarche ?
+      ${d.place}.
+      Coût :
+      ${d.cost}.
+      Délai :
+      ${d.delay}.
+      Étapes :
+      ${d.steps.join(". ")}.
+      À savoir :
+      ${d.special}.
+    `;
+
+  }
+
+
+  const utterance =
+    new SpeechSynthesisUtterance(texte);
+
+
+  if (langue === "fr") {
+
+    utterance.lang = "fr-FR";
+
+  }
+
+  else if (langue === "en") {
+
+    utterance.lang = "en-US";
+
+  }
+
+  else {
+
+    /*
+      Si le navigateur ne possède pas
+      une voix Wolof native, il utilisera
+      une voix disponible.
+    */
+
+    utterance.lang = "fr-FR";
+
+  }
+
+
+  utterance.rate = 0.9;
+
+  window.speechSynthesis.speak(
+    utterance
+  );
+
+}
+
+
+/* =========================================================
+   ANALYSE DOCUMENT — GEMINI
+========================================================= */
+
+const fileInput =
+  document.getElementById("fileInput");
+
+const selectedFile =
+  document.getElementById("selectedFile");
+
+const analysisArea =
+  document.getElementById("analysisArea");
+
+
+if (fileInput) {
+
+  fileInput.addEventListener(
+    "change",
+    function() {
+
+      const file =
+        fileInput.files[0];
+
+      if (!file) return;
+
+
+      selectedFile.innerHTML =
+        "📎 Document sélectionné : " +
+        escapeHtml(file.name);
+
+
+      analyserDocument(file);
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   ANALYSER LE DOCUMENT
+========================================================= */
+
+async function analyserDocument(file) {
+
+  if (file.size > 3 * 1024 * 1024) {
+
+    analysisArea.innerHTML = `
+
+      <div class="result-card">
+
+        ❌ Le document est trop volumineux.
+
+        <br><br>
+
+        Taille maximale :
+        <strong>3 Mo</strong>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  analysisArea.innerHTML = `
+
+    <div class="loading">
+
+      🤖 ACCESS PATH analyse votre document...
+
+      <br>
+
+      Veuillez patienter quelques secondes.
+
+    </div>
+
+  `;
+
+
+  try {
+
+    const base64 =
+      await fileToBase64(file);
+
+
+    const response =
+      await fetch(
+        API_URL,
+        {
+
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json"
+          },
+
+          body: JSON.stringify({
+
+            mimeType: file.type,
+
+            data: base64,
+
+            fileName: file.name
+
+          })
+
+        }
+      );
+
+
+    const result =
+      await response.json();
+
+
+    if (!response.ok || !result.success) {
+
+      throw new Error(
+        result.error ||
+        "Erreur lors de l'analyse."
+      );
+
+    }
+
+
+    afficherAnalyse(
+      result.analysis
+    );
+
+
+  }
+
+  catch (error) {
+
+    console.error(error);
+
+    analysisArea.innerHTML = `
+
+      <div class="result-card">
+
+        ❌ Impossible d'analyser le document.
+
+        <br><br>
+
+        ${escapeHtml(error.message)}
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =========================================================
+   FILE → BASE64
+========================================================= */
+
+function fileToBase64(file) {
+
+  return new Promise(
+    (resolve, reject) => {
+
+      const reader =
+        new FileReader();
+
+      reader.onload =
+        () => {
+
+          const result =
+            reader.result;
+
+          resolve(
+            result.split(",")[1]
+          );
+
+        };
+
+      reader.onerror =
+        reject;
+
+      reader.readAsDataURL(file);
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   AFFICHER ANALYSE
+========================================================= */
+
+function afficherAnalyse(data) {
+
+  const documents =
+    Array.isArray(data.documents)
+      ? data.documents
+      : [];
+
+  const steps =
+    Array.isArray(data.steps)
+      ? data.steps
+      : [];
+
+  const warnings =
+    Array.isArray(data.warnings)
+      ? data.warnings
+      : [];
+
+
+  analysisArea.innerHTML = `
+
+    <div class="analysis-results">
+
+      <div class="result-card">
+
+        <h3>
+          📌 ${escapeHtml(data.title || "Document analysé")}
+        </h3>
+
+        <p>
+          ${escapeHtml(data.summary || "")}
+        </p>
+
+      </div>
+
+
+      <div class="result-card">
+
+        <h3>
+          📋 Documents nécessaires
+        </h3>
+
+        ${
+          documents.length
+          ?
+          `<ul>
+            ${documents
+              .map(x =>
+                `<li>${escapeHtml(x)}</li>`
+              )
+              .join("")}
+          </ul>`
+          :
+          "<p>Aucune information spécifique détectée.</p>"
+        }
+
+      </div>
+
+
+      <div class="result-card">
+
+        <h3>
+          🪜 Étapes à suivre
+        </h3>
+
+        ${
+          steps.length
+          ?
+          `<ol>
+            ${steps
+              .map(x =>
+                `<li>${escapeHtml(x)}</li>`
+              )
+              .join("")}
+          </ol>`
+          :
+          "<p>Aucune étape détectée.</p>"
+        }
+
+      </div>
+
+
+      <div class="result-card">
+
+        <h3>
+          ⚠️ Points à vérifier
+        </h3>
+
+        ${
+          warnings.length
+          ?
+          `<ul>
+            ${warnings
+              .map(x =>
+                `<li>${escapeHtml(x)}</li>`
+              )
+              .join("")}
+          </ul>`
+          :
+          "<p>Aucun point particulier détecté.</p>"
+        }
+
+      </div>
+
+
+      <div class="result-card accessibility-card">
+
+        <h3>
+          ♿ Accessibilité
+        </h3>
+
+        <p id="accessibilityText">
+
+          ${escapeHtml(
+            data.accessibility || ""
+          )}
+
+        </p>
+
+
+        <div class="accessibility-buttons">
+
+          <button
+            onclick="speakResult()"
+          >
+            🔊 Écouter
+          </button>
+
+          <button
+            onclick="increaseText()"
+          >
+            🔎 Agrandir le texte
+          </button>
+
+          <button
+            onclick="highContrast()"
+          >
+            ◐ Contraste élevé
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   VOIX DU RESULTAT
+========================================================= */
+
+function speakResult() {
+
+  const element =
+    document.getElementById(
+      "accessibilityText"
+    );
+
+  if (!element) return;
+
+  window.speechSynthesis.cancel();
+
+
+  const utterance =
+    new SpeechSynthesisUtterance(
+      element.innerText
+    );
+
+
+  utterance.lang =
+    "fr-FR";
+
+  utterance.rate =
+    0.9;
+
+
+  window.speechSynthesis.speak(
+    utterance
+  );
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITE
+========================================================= */
+
+function increaseText() {
+
+  document.body.style.fontSize =
+    "19px";
+
+}
+
+
+function highContrast() {
+
+  document.body.classList.toggle(
+    "high-contrast"
+  );
+
+
+  if (
+    document.body.classList.contains(
+      "high-contrast"
+    )
+  ) {
+
+    document.body.style.background =
+      "#000";
+
+    document.body.style.color =
+      "#fff";
+
+  }
+
+  else {
+
+    document.body.style.background =
+      "#f8fafc";
+
+    document.body.style.color =
+      "#111827";
+
+  }
+
+}
+
+
+/* =========================================================
+   SECURITE HTML
+========================================================= */
+
+function escapeHtml(value) {
+
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+}
+
+</script>
 
 </body>
 </html>
