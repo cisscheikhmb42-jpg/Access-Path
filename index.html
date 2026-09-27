@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>ACCESS PATH — Accessibility Assistant</title>
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -16,12 +18,14 @@
     body {
       background: #f5f7fb;
       color: #172033;
+      transition: 0.2s;
     }
 
     header {
       background: #ffffff;
       padding: 20px 8%;
       border-bottom: 1px solid #e5e7eb;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -36,8 +40,10 @@
     .badge {
       background: #eaf2ff;
       color: #155eef;
+
       padding: 8px 14px;
       border-radius: 20px;
+
       font-size: 13px;
       font-weight: bold;
     }
@@ -46,6 +52,7 @@
       max-width: 1100px;
       margin: 50px auto 30px;
       padding: 0 20px;
+
       text-align: center;
     }
 
@@ -61,8 +68,10 @@
     .hero p {
       font-size: 18px;
       color: #667085;
+
       max-width: 700px;
       margin: auto;
+
       line-height: 1.6;
     }
 
@@ -74,12 +83,18 @@
 
     .upload-box {
       display: block;
+
       background: white;
+
       border: 2px dashed #b8c5dc;
       border-radius: 20px;
+
       padding: 45px;
+
       text-align: center;
+
       cursor: pointer;
+
       transition: 0.2s;
     }
 
@@ -107,13 +122,20 @@
     }
 
     .button {
+      display: inline-block;
+
       border: none;
+
       background: #155eef;
       color: white;
+
       padding: 14px 24px;
+
       border-radius: 10px;
+
       font-size: 16px;
       font-weight: bold;
+
       cursor: pointer;
     }
 
@@ -123,32 +145,45 @@
 
     #fileName {
       margin-top: 15px;
+
       font-weight: bold;
+
       color: #155eef;
+
+      word-break: break-word;
     }
 
     #results {
       display: none;
+
       margin-top: 30px;
     }
 
     .analysis-title {
       margin-bottom: 20px;
+
       font-size: 28px;
     }
 
     .grid {
       display: grid;
+
       grid-template-columns: repeat(2, 1fr);
+
       gap: 18px;
     }
 
     .card {
       background: white;
+
       padding: 24px;
+
       border-radius: 16px;
+
       border: 1px solid #e5e7eb;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+
+      box-shadow:
+        0 5px 20px rgba(0,0,0,0.04);
     }
 
     .card h3 {
@@ -157,12 +192,15 @@
 
     .card p {
       color: #667085;
+
       line-height: 1.6;
     }
 
     .card ul {
       padding-left: 20px;
+
       line-height: 1.9;
+
       color: #475467;
     }
 
@@ -172,9 +210,13 @@
 
     .accessibility {
       margin-top: 25px;
+
       background: #172033;
+
       color: white;
+
       padding: 25px;
+
       border-radius: 16px;
     }
 
@@ -184,28 +226,52 @@
 
     .access-buttons {
       display: flex;
+
       gap: 10px;
+
       flex-wrap: wrap;
     }
 
     .access-buttons button {
       background: white;
+
       color: #172033;
+
       border: none;
+
       padding: 10px 15px;
+
       border-radius: 8px;
+
       cursor: pointer;
+
       font-weight: bold;
+    }
+
+    .loading {
+      text-align: center;
+
+      padding: 30px;
+    }
+
+    .loading-icon {
+      font-size: 40px;
+
+      margin-bottom: 15px;
     }
 
     footer {
       text-align: center;
+
       padding: 40px;
+
       color: #667085;
+
       font-size: 14px;
     }
 
     @media (max-width: 700px) {
+
       .hero h1 {
         font-size: 34px;
       }
@@ -213,764 +279,1009 @@
       .grid {
         grid-template-columns: 1fr;
       }
+
+      header {
+        padding: 18px 5%;
+      }
+
+      .badge {
+        font-size: 11px;
+      }
+
+      .upload-box {
+        padding: 30px 20px;
+      }
+
     }
+
   </style>
 </head>
 
+
 <body>
 
+
 <header>
-  <div class="logo">ACCESS PATH</div>
-  <div class="badge">AI Accessibility Assistant</div>
+
+  <div class="logo">
+    ACCESS PATH
+  </div>
+
+  <div class="badge">
+    AI Accessibility Assistant
+  </div>
+
 </header>
 
+
+
 <section class="hero">
-  <h1>Rendre l'information <span>accessible à tous.</span></h1>
+
+  <h1>
+    Rendre l'information
+    <span>accessible à tous.</span>
+  </h1>
+
 
   <p>
-    ACCESS PATH utilise l'intelligence artificielle pour transformer
-    les documents complexes et les procédures administratives
-    en informations simples, compréhensibles et accessibles.
+
+    ACCESS PATH utilise l'intelligence artificielle
+    pour transformer les documents complexes et les
+    procédures administratives en informations simples,
+    compréhensibles et accessibles.
+
   </p>
+
 </section>
+
+
 
 <main class="container">
 
-  <label class="upload-box" for="document">
-    <div class="upload-icon">📄</div>
 
-    <h2>Analyser un document</h2>
+  <!-- ========================= -->
+  <!-- ZONE DE TÉLÉCHARGEMENT -->
+  <!-- ========================= -->
+
+  <label
+    class="upload-box"
+    for="document"
+  >
+
+    <div class="upload-icon">
+      📄
+    </div>
+
+
+    <h2>
+      Analyser un document
+    </h2>
+
 
     <p>
-      Importez un PDF, une image ou un document administratif.
+
+      Importez un PDF, une image ou
+      un document administratif.
+
     </p>
 
-    <span class="button">Choisir un document</span>
+
+    <span class="button">
+
+      Choisir un document
+
+    </span>
+
 
     <input
       type="file"
       id="document"
-      accept=".pdf,.png,.jpg,.jpeg,.txt"
+
+      accept="application/pdf,image/jpeg,image/png,image/webp"
     >
 
+
     <div id="fileName"></div>
+
   </label>
+
+
+
+  <!-- ========================= -->
+  <!-- RÉSULTATS -->
+  <!-- ========================= -->
 
   <div id="results">
 
+
     <h2 class="analysis-title">
+
       🧠 Analyse ACCESS PATH
+
     </h2>
 
-    <div class="grid">
-
-      <div class="card">
-        <h3>📌 De quoi s'agit-il ?</h3>
-
-        <p>
-          Ce document présente une procédure administrative.
-          ACCESS PATH identifie automatiquement son objectif
-          et explique les informations importantes dans un langage simple.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>📋 Documents nécessaires</h3>
-
-        <ul>
-          <li>Pièce d'identité</li>
-          <li>Formulaire de demande</li>
-          <li>Justificatif demandé</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>🪜 Étapes à suivre</h3>
-
-        <ul>
-          <li>Lire les conditions de la procédure</li>
-          <li>Préparer les documents nécessaires</li>
-          <li>Déposer la demande</li>
-          <li>Suivre l'évolution du dossier</li>
-        </ul>
-      </div>
-
-      <div class="card warning">
-        <h3>⚠️ Points à vérifier</h3>
-
-        <p>
-          ACCESS PATH peut identifier les informations manquantes
-          ou les éléments nécessitant une vérification par l'utilisateur.
-        </p>
-      </div>
-
-    </div>
-
-    <div class="accessibility">
-
-      <h3>♿ Modes d'accessibilité</h3>
-
-      <div class="access-buttons">
-
-        <button onclick="speakResult()">
-          🔊 Écouter
-        </button>
-
-        <button onclick="increaseText()">
-          🔤 Agrandir le texte
-        </button>
-
-        <button onclick="simplify()">
-          🧠 Simplifier
-        </button>
-
-        <button onclick="highContrast()">
-          👁️ Contraste élevé
-        </button>
-
-      </div>
-
-    </div>
 
   </div>
 
+
 </main>
 
+
+
 <footer>
-  ACCESS PATH — AI-powered accessibility for everyone.
+
+  ACCESS PATH —
+  AI-powered accessibility for everyone.
+
 </footer>
 
+
+
 <script>
 
-  const input = document.getElementById("document");
-  const fileName = document.getElementById("fileName");
-  const results = document.getElementById("results");
 
-  input.addEventListener("change", function() {
+/* =========================================
+   CONFIGURATION
+========================================= */
 
-    if (this.files.length > 0) {
+const API_URL =
+  "https://access-path-nu.vercel.app/api/analyze";
 
-      fileName.textContent =
-        "📎 Document sélectionné : " + this.files[0].name;
 
-      setTimeout(() => {
-        results.style.display = "block";
-        results.scrollIntoView({ behavior: "smooth" });
-      }, 700);
 
+/* =========================================
+   INITIALISATION
+========================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
+
+
+    const input =
+      document.getElementById("document");
+
+
+    const fileName =
+      document.getElementById("fileName");
+
+
+    const results =
+      document.getElementById("results");
+
+
+
+    if (!input) {
+
+      console.error(
+        "ACCESS PATH : input document introuvable."
+      );
+
+      return;
     }
 
-  });
 
-  function speakResult() {
 
-    const text =
-      "ACCESS PATH. Ce document présente une procédure administrative. " +
-      "Les documents nécessaires sont une pièce d'identité, " +
-      "un formulaire de demande et un justificatif. " +
-      "Préparez les documents, déposez votre demande et suivez son évolution.";
+    /* =========================================
+       SÉLECTION DU DOCUMENT
+    ========================================= */
 
-    const speech = new SpeechSynthesisUtterance(text);
-    speech.lang = "fr-FR";
+    input.addEventListener(
+      "change",
+      function () {
 
-    window.speechSynthesis.speak(speech);
-  }
 
-  function increaseText() {
+        const file =
+          this.files &&
+          this.files[0];
 
-    document.body.style.fontSize = "19px";
 
-  }
+        if (!file) {
 
-  function simplify() {
+          return;
 
-    alert(
-      "Mode simplifié activé : ACCESS PATH présente uniquement " +
-      "les informations essentielles et les actions à effectuer."
+        }
+
+
+
+        /*
+         AFFICHER IMMÉDIATEMENT LE NOM
+        */
+
+        fileName.textContent =
+          "📎 Document sélectionné : " +
+          file.name;
+
+
+
+        console.log(
+          "ACCESS PATH — fichier sélectionné :",
+          file.name
+        );
+
+
+
+        /*
+         TYPES ACCEPTÉS
+        */
+
+        const allowedTypes = [
+
+          "application/pdf",
+
+          "image/jpeg",
+
+          "image/png",
+
+          "image/webp"
+
+        ];
+
+
+
+        if (
+          !allowedTypes.includes(
+            file.type
+          )
+        ) {
+
+
+          fileName.textContent =
+            "⚠️ Format non accepté : " +
+            file.name;
+
+
+          alert(
+            "Veuillez choisir un PDF, JPG, JPEG, PNG ou WEBP."
+          );
+
+
+          return;
+
+        }
+
+
+
+        /*
+         TAILLE MAXIMUM
+        */
+
+        if (
+          file.size >
+          3000000
+        ) {
+
+
+          fileName.textContent =
+            "⚠️ Fichier trop volumineux : " +
+            file.name;
+
+
+          alert(
+            "Pour cette démonstration, choisissez un fichier de moins de 3 Mo."
+          );
+
+
+          return;
+
+        }
+
+
+
+        /*
+         AFFICHER CHARGEMENT
+        */
+
+        results.style.display =
+          "block";
+
+
+        results.innerHTML = `
+
+          <div class="card loading">
+
+            <div class="loading-icon">
+              🤖
+            </div>
+
+            <h3>
+              Analyse ACCESS PATH en cours...
+            </h3>
+
+            <p style="margin-top:10px;">
+
+              L'intelligence artificielle
+              analyse votre document.
+
+            </p>
+
+            <p style="margin-top:10px;">
+
+              ⏳ Veuillez patienter...
+
+            </p>
+
+          </div>
+
+        `;
+
+
+
+        results.scrollIntoView({
+          behavior: "smooth"
+        });
+
+
+
+        /*
+         LANCER ANALYSE IA
+        */
+
+        analyserDocument(file);
+
+
+      }
     );
 
-  }
-
-  function highContrast() {
-
-    document.body.style.background = "#000";
-    document.body.style.color = "#fff";
-
-  }
-
-<script>
-
-  const API_URL = "https://access-path-nu.vercel.app/api/analyze";
-
-  const input = document.getElementById("document");
-  const fileName = document.getElementById("fileName");
-  const results = document.getElementById("results");
 
 
-  input.addEventListener("change", async function () {
+    /* =========================================
+       ANALYSER LE DOCUMENT
+    ========================================= */
 
-    if (!this.files.length) {
-      return;
-    }
-
-    const file = this.files[0];
-
-    fileName.textContent =
-      "📎 Document sélectionné : " + file.name;
+    async function analyserDocument(
+      file
+    ) {
 
 
-    // Formats acceptés
-    const allowedTypes = [
-      "application/pdf",
-      "image/png",
-      "image/jpeg",
-      "image/webp"
-    ];
+      try {
 
 
-    if (!allowedTypes.includes(file.type)) {
+        /*
+         CONVERTIR EN BASE64
+        */
 
-      alert(
-        "Veuillez sélectionner un fichier PDF ou une image."
-      );
-
-      return;
-    }
-
-
-    // Limite de taille pour la démonstration
-    if (file.size > 3000000) {
-
-      alert(
-        "Pour cette démonstration, utilisez un fichier de moins de 3 Mo."
-      );
-
-      return;
-    }
+        const base64 =
+          await convertirBase64(
+            file
+          );
 
 
-    // Affichage du chargement
-    results.style.display = "block";
 
-    results.innerHTML = `
-
-      <h2 class="analysis-title">
-        🤖 Analyse ACCESS PATH en cours...
-      </h2>
-
-      <div class="card">
-
-        <p>
-          ACCESS PATH analyse votre document avec
-          l'intelligence artificielle.
-        </p>
-
-        <p style="margin-top:10px;">
-          ⏳ Veuillez patienter quelques secondes...
-        </p>
-
-      </div>
-
-    `;
-
-
-    results.scrollIntoView({
-      behavior: "smooth"
-    });
-
-
-    try {
-
-      // Conversion du fichier en Base64
-      const base64 = await fileToBase64(file);
-
-
-      // Envoi vers notre API Vercel
-      const response = await fetch(API_URL, {
-
-        method: "POST",
-
-        headers: {
-          "Content-Type": "application/json"
-        },
-
-        body: JSON.stringify({
-
-          mimeType: file.type,
-
-          data: base64,
-
-          fileName: file.name
-
-        })
-
-      });
-
-
-      const data = await response.json();
-
-
-      if (!response.ok) {
-
-        throw new Error(
-          data.error ||
-          "Une erreur est survenue pendant l'analyse."
+        console.log(
+          "ACCESS PATH — document converti."
         );
+
+
+
+        /*
+         ENVOYER À VERCEL
+        */
+
+        const response =
+          await fetch(
+            API_URL,
+            {
+
+              method: "POST",
+
+              headers: {
+
+                "Content-Type":
+                  "application/json"
+
+              },
+
+              body:
+                JSON.stringify({
+
+                  mimeType:
+                    file.type,
+
+                  data:
+                    base64,
+
+                  fileName:
+                    file.name
+
+                })
+
+            }
+          );
+
+
+
+        /*
+         RÉCUPÉRER RÉPONSE
+        */
+
+        const data =
+          await response.json();
+
+
+
+        console.log(
+          "ACCESS PATH — réponse API :",
+          data
+        );
+
+
+
+        if (
+          !response.ok
+        ) {
+
+          throw new Error(
+
+            data.error ||
+            "Erreur pendant l'analyse."
+
+          );
+
+        }
+
+
+
+        /*
+         AFFICHER RÉSULTAT
+        */
+
+        afficherResultat(
+          data.analysis
+        );
+
 
       }
 
 
-      // Afficher le résultat
-      displayResults(data.analysis);
+      catch (
+        error
+      ) {
 
 
-    } catch (error) {
+        console.error(
+          "ACCESS PATH — erreur :",
+          error
+        );
 
-      console.error(error);
+
+
+        results.innerHTML = `
+
+          <div class="card warning">
+
+            <h3>
+              ⚠️ Impossible d'analyser le document
+            </h3>
+
+
+            <p style="margin-top:10px;">
+
+              ${escapeHtml(
+                error.message
+              )}
+
+            </p>
+
+
+            <p style="margin-top:10px;">
+
+              Vérifiez votre connexion
+              puis réessayez.
+
+            </p>
+
+          </div>
+
+        `;
+
+      }
+
+    }
+
+
+
+    /* =========================================
+       CONVERTIR FICHIER EN BASE64
+    ========================================= */
+
+    function convertirBase64(
+      file
+    ) {
+
+
+      return new Promise(
+        function (
+          resolve,
+          reject
+        ) {
+
+
+          const reader =
+            new FileReader();
+
+
+
+          reader.onload =
+            function () {
+
+
+              const result =
+                reader.result;
+
+
+              const base64 =
+                result.split(",")[1];
+
+
+              resolve(
+                base64
+              );
+
+            };
+
+
+
+          reader.onerror =
+            function () {
+
+
+              reject(
+
+                new Error(
+                  "Impossible de lire le fichier."
+                )
+
+              );
+
+            };
+
+
+
+          reader.readAsDataURL(
+            file
+          );
+
+        }
+      );
+
+    }
+
+
+
+    /* =========================================
+       AFFICHER RÉSULTAT IA
+    ========================================= */
+
+    function afficherResultat(
+      analysis
+    ) {
+
+
+      const documents =
+        Array.isArray(
+          analysis.documents
+        )
+          ? analysis.documents
+          : [];
+
+
+
+      const steps =
+        Array.isArray(
+          analysis.steps
+        )
+          ? analysis.steps
+          : [];
+
+
+
+      const warnings =
+        Array.isArray(
+          analysis.warnings
+        )
+          ? analysis.warnings
+          : [];
+
 
 
       results.innerHTML = `
 
         <h2 class="analysis-title">
-          ⚠️ Problème d'analyse
+
+          🧠 Analyse ACCESS PATH
+
         </h2>
 
 
-        <div class="card warning">
+
+        <div class="grid">
+
+
+          <!-- RÉSUMÉ -->
+
+          <div class="card">
+
+            <h3>
+
+              📌 ${
+                escapeHtml(
+                  analysis.title ||
+                  "Document analysé"
+                )
+              }
+
+            </h3>
+
+
+            <p>
+
+              ${
+                escapeHtml(
+                  analysis.summary ||
+                  "Aucun résumé disponible."
+                )
+              }
+
+            </p>
+
+          </div>
+
+
+
+          <!-- DOCUMENTS -->
+
+          <div class="card">
+
+            <h3>
+
+              📋 Documents nécessaires
+
+            </h3>
+
+
+            <ul>
+
+              ${
+                documents.length
+
+                  ? documents
+                      .map(
+                        function (
+                          item
+                        ) {
+
+                          return `
+                            <li>
+                              ${escapeHtml(
+                                item
+                              )}
+                            </li>
+                          `;
+
+                        }
+                      )
+                      .join("")
+
+                  : `
+
+                    <li>
+                      Aucun document identifié.
+                    </li>
+
+                  `
+              }
+
+            </ul>
+
+          </div>
+
+
+
+          <!-- ÉTAPES -->
+
+          <div class="card">
+
+            <h3>
+
+              🪜 Étapes à suivre
+
+            </h3>
+
+
+            <ul>
+
+              ${
+                steps.length
+
+                  ? steps
+                      .map(
+                        function (
+                          item
+                        ) {
+
+                          return `
+                            <li>
+                              ${escapeHtml(
+                                item
+                              )}
+                            </li>
+                          `;
+
+                        }
+                      )
+                      .join("")
+
+                  : `
+
+                    <li>
+                      Aucune étape identifiée.
+                    </li>
+
+                  `
+              }
+
+            </ul>
+
+          </div>
+
+
+
+          <!-- ALERTES -->
+
+          <div class="card warning">
+
+            <h3>
+
+              ⚠️ Points à vérifier
+
+            </h3>
+
+
+            <ul>
+
+              ${
+                warnings.length
+
+                  ? warnings
+                      .map(
+                        function (
+                          item
+                        ) {
+
+                          return `
+                            <li>
+                              ${escapeHtml(
+                                item
+                              )}
+                            </li>
+                          `;
+
+                        }
+                      )
+                      .join("")
+
+                  : `
+
+                    <li>
+                      Aucun point particulier identifié.
+                    </li>
+
+                  `
+              }
+
+            </ul>
+
+          </div>
+
+
+        </div>
+
+
+
+        <!-- ACCESSIBILITÉ -->
+
+        <div class="accessibility">
 
           <h3>
-            Impossible d'analyser le document
+
+            ♿ Accessibilité
+
           </h3>
 
 
-          <p style="margin-top:10px;">
+          <p
+            style="
+              margin:15px 0;
+              line-height:1.6;
+            "
+          >
 
-            ${escapeHtml(error.message)}
+            ${
+              escapeHtml(
+                analysis.accessibility ||
+                "Aucun conseil supplémentaire."
+              )
+            }
 
           </p>
 
 
-          <p style="margin-top:10px;">
+          <div class="access-buttons">
 
-            Vérifiez votre connexion et réessayez.
 
-          </p>
+            <button
+              onclick="speakResult()"
+            >
+
+              🔊 Écouter
+
+            </button>
+
+
+            <button
+              onclick="increaseText()"
+            >
+
+              🔤 Agrandir le texte
+
+            </button>
+
+
+            <button
+              onclick="highContrast()"
+            >
+
+              👁️ Contraste élevé
+
+            </button>
+
+
+          </div>
 
         </div>
 
       `;
 
+
+      results.scrollIntoView({
+        behavior: "smooth"
+      });
+
     }
 
-  });
+
+
+    /* =========================================
+       PROTECTION HTML
+    ========================================= */
+
+    function escapeHtml(
+      value
+    ) {
+
+
+      const div =
+        document.createElement(
+          "div"
+        );
+
+
+      div.textContent =
+        value == null
+          ? ""
+          : String(value);
+
+
+      return div.innerHTML;
+
+    }
 
 
 
-  // ==========================================
-  // CONVERSION DU DOCUMENT
-  // ==========================================
+    /* =========================================
+       ACCESSIBILITÉ
+    ========================================= */
 
-  function fileToBase64(file) {
-
-    return new Promise((resolve, reject) => {
-
-      const reader = new FileReader();
+    window.speakResult =
+      function () {
 
 
-      reader.onload = function () {
-
-        const result = reader.result;
-
-        const base64 =
-          result.split(",")[1];
-
-        resolve(base64);
-
-      };
-
-
-      reader.onerror = function () {
-
-        reject(
-          new Error(
-            "Impossible de lire le document."
+        if (
+          !(
+            "speechSynthesis"
+            in window
           )
+        ) {
+
+
+          alert(
+            "La lecture vocale n'est pas disponible sur ce navigateur."
+          );
+
+
+          return;
+
+        }
+
+
+
+        const speech =
+          new SpeechSynthesisUtterance(
+            results.innerText
+          );
+
+
+        speech.lang =
+          "fr-FR";
+
+
+        speech.rate =
+          0.9;
+
+
+        window.speechSynthesis.cancel();
+
+
+        window.speechSynthesis.speak(
+          speech
         );
 
       };
 
 
-      reader.readAsDataURL(file);
 
-    });
+    window.increaseText =
+      function () {
+
+
+        document.body.style.fontSize =
+          "19px";
+
+      };
+
+
+
+    window.highContrast =
+      function () {
+
+
+        if (
+          document.body.style.backgroundColor ===
+          "black"
+        ) {
+
+
+          document.body.style.backgroundColor =
+            "#f5f7fb";
+
+
+          document.body.style.color =
+            "#172033";
+
+
+        }
+
+        else {
+
+
+          document.body.style.backgroundColor =
+            "black";
+
+
+          document.body.style.color =
+            "white";
+
+        }
+
+      };
+
 
   }
-
-
-
-  // ==========================================
-  // AFFICHER LES RÉSULTATS
-  // ==========================================
-
-  function displayResults(analysis) {
-
-
-    const documents =
-      Array.isArray(analysis.documents)
-        ? analysis.documents
-        : [];
-
-
-    const steps =
-      Array.isArray(analysis.steps)
-        ? analysis.steps
-        : [];
-
-
-    const warnings =
-      Array.isArray(analysis.warnings)
-        ? analysis.warnings
-        : [];
-
-
-    results.innerHTML = `
-
-
-      <h2 class="analysis-title">
-        🧠 Analyse ACCESS PATH
-      </h2>
-
-
-
-      <div class="grid">
-
-
-        <!-- RÉSUMÉ -->
-
-        <div class="card">
-
-          <h3>
-
-            📌 ${escapeHtml(
-              analysis.title ||
-              "Document analysé"
-            )}
-
-          </h3>
-
-
-          <p>
-
-            ${escapeHtml(
-              analysis.summary ||
-              "Aucun résumé disponible."
-            )}
-
-          </p>
-
-        </div>
-
-
-
-        <!-- DOCUMENTS -->
-
-        <div class="card">
-
-          <h3>
-            📋 Documents nécessaires
-          </h3>
-
-
-          ${
-            documents.length
-
-              ? `
-
-                <ul>
-
-                  ${documents
-                    .map(
-                      item =>
-                        `<li>${escapeHtml(item)}</li>`
-                    )
-                    .join("")}
-
-                </ul>
-
-              `
-
-              : `
-
-                <p>
-                  Aucun document supplémentaire identifié.
-                </p>
-
-              `
-          }
-
-        </div>
-
-
-
-        <!-- ÉTAPES -->
-
-        <div class="card">
-
-          <h3>
-            🪜 Étapes à suivre
-          </h3>
-
-
-          ${
-            steps.length
-
-              ? `
-
-                <ul>
-
-                  ${steps
-                    .map(
-                      item =>
-                        `<li>${escapeHtml(item)}</li>`
-                    )
-                    .join("")}
-
-                </ul>
-
-              `
-
-              : `
-
-                <p>
-                  Aucune étape clairement identifiée.
-                </p>
-
-              `
-          }
-
-        </div>
-
-
-
-        <!-- ALERTES -->
-
-        <div class="card warning">
-
-          <h3>
-            ⚠️ Points à vérifier
-          </h3>
-
-
-          ${
-            warnings.length
-
-              ? `
-
-                <ul>
-
-                  ${warnings
-                    .map(
-                      item =>
-                        `<li>${escapeHtml(item)}</li>`
-                    )
-                    .join("")}
-
-                </ul>
-
-              `
-
-              : `
-
-                <p>
-                  Aucun point particulier identifié.
-                </p>
-
-              `
-          }
-
-        </div>
-
-
-      </div>
-
-
-
-      <!-- ACCESSIBILITÉ -->
-
-      <div class="accessibility">
-
-        <h3>
-          ♿ Accessibilité
-        </h3>
-
-
-        <p style="margin-bottom:15px; line-height:1.6;">
-
-          ${escapeHtml(
-            analysis.accessibility ||
-            "Aucun conseil supplémentaire."
-          )}
-
-        </p>
-
-
-        <div class="access-buttons">
-
-
-          <button onclick="speakResult()">
-            🔊 Écouter
-          </button>
-
-
-          <button onclick="increaseText()">
-            🔤 Agrandir le texte
-          </button>
-
-
-          <button onclick="simplify()">
-            🧠 Simplifier
-          </button>
-
-
-          <button onclick="highContrast()">
-            👁️ Contraste élevé
-          </button>
-
-
-        </div>
-
-      </div>
-
-    `;
-
-
-    results.scrollIntoView({
-      behavior: "smooth"
-    });
-
-  }
-
-
-
-  // ==========================================
-  // LECTURE VOCALE
-  // ==========================================
-
-  function speakResult() {
-
-
-    if (!("speechSynthesis" in window)) {
-
-      alert(
-        "La lecture vocale n'est pas disponible sur ce navigateur."
-      );
-
-      return;
-    }
-
-
-    const text =
-      results.innerText;
-
-
-    const speech =
-      new SpeechSynthesisUtterance(text);
-
-
-    speech.lang = "fr-FR";
-
-    speech.rate = 0.9;
-
-
-    window.speechSynthesis.cancel();
-
-    window.speechSynthesis.speak(speech);
-
-  }
-
-
-
-  // ==========================================
-  // AGRANDIR LE TEXTE
-  // ==========================================
-
-  function increaseText() {
-
-    document.body.style.fontSize = "19px";
-
-  }
-
-
-
-  // ==========================================
-  // MODE SIMPLIFIÉ
-  // ==========================================
-
-  function simplify() {
-
-    alert(
-      "Mode simplifié activé : ACCESS PATH présente les informations essentielles et les actions à effectuer."
-    );
-
-  }
-
-
-
-  // ==========================================
-  // CONTRASTE ÉLEVÉ
-  // ==========================================
-
-  function highContrast() {
-
-
-    if (
-      document.body.style.backgroundColor === "black"
-    ) {
-
-
-      document.body.style.backgroundColor =
-        "#f5f7fb";
-
-
-      document.body.style.color =
-        "#172033";
-
-
-    } else {
-
-
-      document.body.style.backgroundColor =
-        "black";
-
-
-      document.body.style.color =
-        "white";
-
-    }
-
-  }
-
-
-
-  // ==========================================
-  // PROTECTION DU CONTENU
-  // ==========================================
-
-  function escapeHtml(value) {
-
-    const div =
-      document.createElement("div");
-
-
-    div.textContent =
-      value ?? "";
-
-
-    return div.innerHTML;
-
-  }
+);
 
 </script>
+
 
 </body>
 </html>
